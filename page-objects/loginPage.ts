@@ -8,6 +8,14 @@ export class LoginPage {
     readonly loginSignIn: Locator
     readonly incorrectPassOrEmailMessage: Locator
     readonly successfulAccountDeletedMessage: Locator
+    readonly emailField: Locator
+    readonly passwordField: Locator
+    readonly loginButton: Locator
+    readonly signUpForm: Locator
+    readonly nameTextBox: Locator
+    readonly emailTextBoxSignUp: Locator
+    readonly signUpButton: Locator
+    readonly deleteAccountButton: Locator
 
     constructor(page: Page) {
         this.page = page
@@ -16,6 +24,16 @@ export class LoginPage {
         this.incorrectPassOrEmailMessage = page.getByText("Your email or password is incorrect!")
         this.loginSignIn = page.getByText(' Signup / Login')
         this.successfulAccountDeletedMessage = page.getByText('Account Deleted!')
+        this.emailField = this.loginForm.getByPlaceholder('Email Address')
+        this.passwordField = this.loginForm.getByRole('textbox', { name: 'Password' })
+        this.loginButton = this.loginForm.getByRole('button', { name: 'Login' })
+        this.signUpForm = page.locator('.signup-form')
+        this.nameTextBox = this.signUpForm.getByPlaceholder('Name')
+        this.emailTextBoxSignUp = this.signUpForm.getByRole('textbox', { name: 'Email Address' })
+        this.signUpButton = this.signUpForm.getByRole('button', { name: 'Signup' })
+        this.deleteAccountButton = page.getByText(' Delete Account')
+
+
 
 
     }
@@ -25,21 +43,21 @@ export class LoginPage {
     }
 
     async loginWithCredentials(Email: string, Password: string) {
-        await this.loginForm.getByPlaceholder('Email Address').fill(Email)
-        await this.loginForm.getByRole('textbox', { name: 'Password' }).fill(Password)
-        await this.loginForm.getByRole('button', { name: 'Login' }).click()
+        await this.emailField.fill(Email)
+        await this.passwordField.fill(Password)
+        await this.loginButton.click()
     }
 
     async signUp(Name: string, Email: string) {
-        await this.page.locator('.signup-form').getByPlaceholder('Name').fill(Name)
-        await this.page.locator('.signup-form').getByRole('textbox', { name: 'Email Address' }).fill(Email)
-        await this.page.locator('.signup-form').getByRole('button', { name: 'Signup' }).click()
+        await this.nameTextBox.fill(Name)
+        await this.emailTextBoxSignUp.fill(Email)
+        await this.signUpButton.click()
     }
     async logout() {
-        await this.page.getByText(' Logout').click()
+        await this.logoutButton.click()
     }
     async deleteAccount() {
-        await this.page.getByText(' Delete Account').click()
+        await this.deleteAccountButton.click()
     }
     getLogInSignInButton(): Locator {
         return this.loginSignIn
