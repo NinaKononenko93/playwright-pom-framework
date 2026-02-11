@@ -1,0 +1,14 @@
+{
+    "validEmail": "nktest@test.com",
+    "validPassword": "pass12345",
+    "lastName": "Smith",
+    "inValidEmail": "invalid@test.com",
+    "inValidPassword": "wrongpass",
+    "cardName": "John Doe",
+    "cardNumber": "4111111111111111",
+    "cvc": "123",
+    "cardMonth": "12",
+    "cardYear": "2025",
+    "itemtoCartOne": "Men Tshirt",
+    "itemtoCartTwo": "Stylish Dress"
+}
