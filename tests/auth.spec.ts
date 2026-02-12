@@ -1,6 +1,5 @@
 import { expect } from '@playwright/test';
 import { test } from '../utils/test-options';
-import { faker } from '@faker-js/faker';
 import testData from '../test-data/testData.json';
 
 test.describe('Login Tests', () => {
@@ -30,16 +29,11 @@ test.describe('Login Tests', () => {
 
     test('Sign up with valid data E2E flow', async ({ shop }) => {
 
-
-        const randomName = faker.person.fullName();
-        const randomFirstName = faker.person.firstName();
-        const randomEmail = faker.internet.email()
-
-        await shop.auth().signUp(randomName, randomEmail)
+        await shop.auth().signUp(testData.randomName, testData.randomEmail)
 
         await expect(shop.accountInfo().getAccountPageTitle()).toBeVisible()
 
-        await shop.accountInfo().accountInfoFillUp(testData.validPassword, randomFirstName, testData.lastName)
+        await shop.accountInfo().accountInfoFillUp(testData.validPassword, testData.randomName, testData.lastName)
         await expect(shop.accountInfo().getAccountCreatedMessage()).toBeVisible()
         await shop.accountInfo().getContinueButtonToProceedAndCreateAccount().click();
 

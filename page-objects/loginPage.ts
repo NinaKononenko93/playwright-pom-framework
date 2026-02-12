@@ -35,7 +35,6 @@ export class LoginPage {
 
 
 
-
     }
     async navigateToLogin() {
         await this.page.goto('/')
