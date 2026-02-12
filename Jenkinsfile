@@ -8,7 +8,6 @@ pipeline {
 
   options {
     timestamps()
-    ansiColor('xterm')
   }
 
   stages {
@@ -29,7 +28,6 @@ pipeline {
   post {
     always {
       archiveArtifacts artifacts: 'playwright-report/**,test-results/**', allowEmptyArchive: true
-      junit 'test-results/**/*.xml'
     }
   }
 }
