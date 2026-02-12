@@ -1,4 +1,3 @@
-import { v } from '@faker-js/faker/dist/airline-CWrCIUHH';
 import { Page, Locator } from '@playwright/test';
 
 export class AccountInformationPage {

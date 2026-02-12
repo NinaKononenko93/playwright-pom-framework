@@ -1,6 +1,9 @@
 {
     "validEmail": "nktest@test.com",
     "validPassword": "pass12345",
+    "randomEmail": "randomTest@test.com",
+    "randomPassword": "pass12345",
+    "randomName": "Test",
     "lastName": "Smith",
     "inValidEmail": "invalid@test.com",
     "inValidPassword": "wrongpass",
